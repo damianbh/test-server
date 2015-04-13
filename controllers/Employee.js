@@ -2,7 +2,8 @@
 
 var restMiddleware = require('../restMiddleware'),
     data = require('../data'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    Promise = require('bluebird');
 
 module.exports.newEmployee = new restMiddleware.CreateController({
     model: data.models.Employee,
@@ -14,9 +15,9 @@ module.exports.newEmployee = new restMiddleware.CreateController({
 }).getMiddleware();
 
 module.exports.getEmployee = new restMiddleware.ReadController({
-    model: data.models.Employee,
-    idParam: 'employeeId'
-}
+        model: data.models.Employee,
+        idParam: 'employeeId'
+    }
     //, {
     //    transform: function (context) {
     //        return data.models.Office.findAll().then(function (allOffices) {
