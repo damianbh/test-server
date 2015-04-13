@@ -1,0 +1,17 @@
+{
+  "appName": "krfsRestTest",
+  "host": "localhost",
+  "connection": {
+    "database": "krfsRestTest",
+    "username": "root",
+    "password": "20dakota04",
+    "options": {
+      "host": "localhost",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    }
+  }
+}

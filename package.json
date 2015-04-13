@@ -1,0 +1,24 @@
+{
+  "name": "krfs-rest-assigment",
+  "version": "0.1.0",
+  "description": "Assigment Test for KRFS",
+  "main": "index.js",
+  "keywords": [
+    "rest",
+    "swagger"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "async": "^0.9.0",
+    "bluebird": "^2.9.14",
+    "bunyan": "^1.3.4",
+    "bunyan-middleware": "^0.2.0",
+    "connect": "^3.2.0",
+    "datatable": "^1.1.2",
+    "mysql": "^2.5.5",
+    "sequelize": "^2.0.5",
+    "swagger-tools": "*",
+    "underscore": "^1.8.2"
+  }
+}
