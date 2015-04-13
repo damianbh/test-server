@@ -10,6 +10,9 @@
 //  offsetParam: offset Param Name, defaults to "offset", used for pagination
 //  limitParam: limit Param Name, defaults to "limit", used for pagination
 // }
+
+'use strict';
+
 var
     util = require('util'),
     BaseRestMiddleware = require('./base'),
@@ -59,7 +62,7 @@ ListRestMiddleware.prototype.getFindOpts = function (context) {
             qf = req.swagger.params[opts.searchFields || 'qf'].value;
 
         if (qf) {
-            qfArr = qf.split(',');
+            var qfArr = qf.split(',');
             if (qfArr.length) {
                 var dif = _.difference(qfArr, searchAttributes);
                 if (dif.length) {
