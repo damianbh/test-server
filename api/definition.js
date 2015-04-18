@@ -148,7 +148,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Employee"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 //"parameters": [],
@@ -258,7 +258,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Employee"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 "parameters": [{
@@ -524,7 +524,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Provider"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 //"parameters": [],
@@ -634,7 +634,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Provider"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 "parameters": [
@@ -714,7 +714,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Client"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 //"parameters": [],
@@ -824,7 +824,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Client"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 "parameters": [{
@@ -923,7 +923,7 @@ module.exports = {
             "options": {
                 "x-swagger-router-controller": "Options",
                 "operationId": "options",
-                "tags": ["Office"],
+                "tags": ["Client"],
                 "description": "OPTIONS method",
                 "summary": "OPTIONS method",
                 "parameters": [{
