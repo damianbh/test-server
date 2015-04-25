@@ -37,11 +37,11 @@ var badRequestError = function (opts) {
     return restError(opts);
 };
 
-var forbiddenError = function (opts) {
+var unauthorizedError = function (opts) {
     opts = opts || {};
-    opts.statusCode = 403;
-    opts.message = opts.message || 'Forbidden';
-    opts.code = opts.code || 'FORBIDDEN';
+    opts.statusCode = 401;
+    opts.message = opts.message || 'Unauthorized';
+    opts.code = opts.code || 'UNAUTHORIZED';
     return restError(opts);
 };
 
@@ -57,5 +57,5 @@ module.exports = {
     notFoundError: notFoundError,
     badRequestError: badRequestError,
     restError: restError,
-    forbiddenError: forbiddenError
+    unauthorizedError: unauthorizedError
 };

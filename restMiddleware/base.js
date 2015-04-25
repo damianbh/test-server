@@ -35,6 +35,7 @@ BaseRestMiddleware.prototype.getMiddleware = function () {
             next: next
         };
 
+
         Promise.resolve(self.fetch(context)).then(function () {
             return Promise.resolve(self.data(context)).then(function () {
                 return Promise.resolve(self.transform(context)).then(function () {
@@ -59,6 +60,8 @@ BaseRestMiddleware.prototype.getMiddleware = function () {
                 error: err
             }));
         });
+
+
     }
 };
 

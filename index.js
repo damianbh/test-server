@@ -73,9 +73,15 @@ async.map([swaggerDoc, swaggerDocMock], function (doc, callback) {
 
 
         app.use(function (req, res, next) {
-                res.setHeader("Access-Control-Allow-Origin", "*");
-                res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                var
+                    allowedOrigins = config.allowedOrigins || [];
+                if (allowedOrigins.indexOf(req.headers['origin']) > -1) {
+                    res.setHeader("Access-Control-Allow-Origin", req.headers['origin']);
+                }
+                //res.setHeader("Access-Control-Allow-Origin", "*");
+                res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
                 res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                res.setHeader("Access-Control-Allow-Credentials", true);
                 res.setHeader("Access-Control-Expose-Headers", "Content-Range");
                 res.restSend = function (statusCode, body) {
 
@@ -190,6 +196,73 @@ async.map([swaggerDoc, swaggerDocMock], function (doc, callback) {
         // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
         app.use(middleware.swaggerMetadata());
 
+        app.use(middleware.swaggerSecurity({
+            api_key: function (req, def, key, callback) {
+                var
+                    sec = req.swagger.operation['x-swagger-security'];
+
+                if (sec) {
+                    var roles = _.isArray(sec.roles) ? sec.roles : undefined,
+                        tqs = key ? 'ticket=' + encodeURIComponent(key) : '';
+
+                    if (tqs) {
+                        http.get(config.CAS_URL + '/validate?' + tqs, function (response) {
+                                switch (response.statusCode) {
+                                    case 200:
+                                        if (roles) {
+                                            var body = '';
+                                            response.on('data', function (d) {
+                                                body += d;
+                                            });
+                                            response.on('end', function () {
+                                                // Data reception is done, do whatever with it!
+                                                var
+                                                    parsed = JSON.parse(body),
+                                                    userRoles = _.isArray(parsed.roles) ? parsed.roles : [];
+                                                if (_.intersection(roles, userRoles).length) {
+                                                    callback();
+                                                } else {
+                                                    callback(errors.unauthorizedError());
+                                                }
+                                            });
+                                        } else {
+                                            callback();
+                                        }
+                                        break;
+                                    case 401:
+                                        callback(errors.unauthorizedError({
+                                            code: 'NO_SESSION'
+                                        }));
+                                        break;
+                                    default:
+                                        callback(errors.restError({
+                                            message: 'CAS server Error. Could not check security. Please contact your network administrator.'
+                                        }));
+                                }
+
+                            }
+                        ).on('error', function (e) {
+                                if (e.code === 'ECONNREFUSED') {
+                                    e.message = 'CAS server unavailable. Please contact your network administrator.';
+                                }
+                                callback(errors.restError({
+                                    error: e
+                                }));
+                            });
+                    } else {
+                        callback(errors.unauthorizedError({
+                            code: 'NO_SESSION'
+                        }));
+                    }
+
+                } else {
+                    callback();
+                }
+
+
+            }
+        }));
+
         // Validate Swagger requests
         app.use(middleware.swaggerValidator());
 
@@ -203,7 +276,7 @@ async.map([swaggerDoc, swaggerDocMock], function (doc, callback) {
         //app.use(middleware.swaggerUi());
 
         app.use(function (req, res, next) {
-            next(errors.notFoundError({message: 'Path not found '+ req.url}));
+            next(errors.notFoundError({message: 'Path not found ' + req.url}));
         });
 
         app.use(function (err, req, res, next) {

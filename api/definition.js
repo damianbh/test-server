@@ -88,10 +88,23 @@ module.exports = {
     "produces": ["application/json"],
     "host": host + ':' + port,
     "basePath": "/api",
+    securityDefinitions: {
+        "api_key": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    security: [{
+        "api_key": []
+    }],
     "paths": {
         "/employees": {
             "get": {
                 "x-swagger-router-controller": "Employee",
+                "x-swagger-security": {
+                    roles:["admin"]
+                },
                 "operationId": "listEmployees",
                 "tags": ["Employee"],
                 "description": "Returns Employees filtered/sorted.",
