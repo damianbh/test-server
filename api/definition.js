@@ -103,7 +103,7 @@ module.exports = {
             "get": {
                 "x-swagger-router-controller": "Employee",
                 "x-swagger-security": {
-                    roles:["admin"]
+                    roles: ["human_resources"]
                 },
                 "operationId": "listEmployees",
                 "tags": ["Employee"],
@@ -130,6 +130,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Employee",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "newEmployee",
                 "tags": ["Employee"],
                 "description": "Create new Employee.",
@@ -175,6 +178,9 @@ module.exports = {
         "/employees/{employeeId}": {
             "get": {
                 "x-swagger-router-controller": "Employee",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "getEmployee",
                 "tags": ["Employee"],
                 "description": "Returns Employee by Id.",
@@ -206,6 +212,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Employee",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "updateEmployee",
                 "tags": ["Employee"],
                 "description": "Update Employee by  Id.",
@@ -243,6 +252,9 @@ module.exports = {
             },
             "delete": {
                 "x-swagger-router-controller": "Employee",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "deleteEmployee",
                 "tags": ["Employee"],
                 "description": "Delete Employee by  Id.",
@@ -293,6 +305,9 @@ module.exports = {
         "/offices": {
             "get": {
                 "x-swagger-router-controller": "Office",
+                "x-swagger-security": {
+                    roles: ["director", "human_resources"]
+                },
                 "operationId": "listOffices",
                 "tags": ["Office"],
                 "description": "Returns Offices filtered/sorted.",
@@ -318,6 +333,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Office",
+                "x-swagger-security": {
+                    roles: ["director"]
+                },
                 "operationId": "newOffice",
                 "tags": ["Office"],
                 "description": "Create new Office.",
@@ -363,6 +381,9 @@ module.exports = {
         "/offices/{officeId}": {
             "get": {
                 "x-swagger-router-controller": "Office",
+                "x-swagger-security": {
+                    roles: ["director"]
+                },
                 "operationId": "getOffice",
                 "tags": ["Office"],
                 "description": "Returns Office by Id.",
@@ -394,6 +415,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Office",
+                "x-swagger-security": {
+                    roles: ["director"]
+                },
                 "operationId": "updateOffice",
                 "tags": ["Office"],
                 "description": "Update Office by Id.",
@@ -431,6 +455,9 @@ module.exports = {
             },
             "delete": {
                 "x-swagger-router-controller": "Office",
+                "x-swagger-security": {
+                    roles: ["director"]
+                },
                 "operationId": "deleteOffice",
                 "tags": ["Office"],
                 "description": "Delete Office by Id.",
@@ -481,6 +508,9 @@ module.exports = {
         "/providers": {
             "get": {
                 "x-swagger-router-controller": "Provider",
+                "x-swagger-security": {
+                    roles: ["human_resources", "manager"]
+                },
                 "operationId": "listProviders",
                 "tags": ["Provider"],
                 "description": "Returns Providers filtered/sorted.",
@@ -506,6 +536,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Provider",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "newProvider",
                 "tags": ["Provider"],
                 "description": "Create new Provider.",
@@ -551,6 +584,9 @@ module.exports = {
         "/providers/{providerId}": {
             "get": {
                 "x-swagger-router-controller": "Provider",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "getProvider",
                 "tags": ["Provider"],
                 "description": "Returns Provider by Id.",
@@ -582,6 +618,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Provider",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "updateProvider",
                 "tags": ["Provider"],
                 "description": "Update Provider by  Id.",
@@ -619,6 +658,9 @@ module.exports = {
             },
             "delete": {
                 "x-swagger-router-controller": "Provider",
+                "x-swagger-security": {
+                    roles: ["human_resources"]
+                },
                 "operationId": "deleteProvider",
                 "tags": ["Provider"],
                 "description": "Delete Provider by Id.",
@@ -671,6 +713,9 @@ module.exports = {
         "/clients": {
             "get": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "listClients",
                 "tags": ["Client"],
                 "description": "Returns Clients filtered/sorted.",
@@ -696,6 +741,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "newClient",
                 "tags": ["Client"],
                 "description": "Create new Client.",
@@ -741,6 +789,9 @@ module.exports = {
         "/clients/{clientId}": {
             "get": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "getClient",
                 "tags": ["Client"],
                 "description": "Returns Client by Id.",
@@ -772,6 +823,9 @@ module.exports = {
             },
             "post": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "updateClient",
                 "tags": ["Client"],
                 "description": "Update Client by Id.",
@@ -809,6 +863,9 @@ module.exports = {
             },
             "delete": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "deleteClient",
                 "tags": ["Client"],
                 "description": "Delete Client by  Id.",
@@ -857,6 +914,9 @@ module.exports = {
         "/clients/{clientId}/providers": {
             "get": {
                 "x-swagger-router-controller": "Client",
+                "x-swagger-security": {
+                    roles: ["manager"]
+                },
                 "operationId": "getClientProviders",
                 "tags": ["Client"],
                 "description": "Returns Client's providers list filtered/sorted.",
