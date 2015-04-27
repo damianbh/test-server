@@ -1,12 +1,12 @@
 {
   "appName": "krfsRestTest",
   "host": "localhost",
-  "CAS_URL": "http://localhost:3001",
-  "allowedOrigins": ["http://localhost:3000","http://localhost:3002"],
+  "CAS_URL": "http://localhost:3002",
+  "allowedOrigins": ["http://localhost:3000","http://localhost:3001"],
   "connection": {
     "database": "krfsRestTest",
     "username": "root",
-    "password": "20dakota04",
+    "password": "",
     "options": {
       "host": "localhost",
       "pool": {
