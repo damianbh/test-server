@@ -81,8 +81,8 @@ var
 module.exports = {
     "swagger": "2.0",
     "info": {
-        "title": "Krfs Rest Api",
-        "description": "API for Krfs Assignment.",
+        "title": "Rest Api",
+        "description": "Rest Api Example",
         "version": "1.0"
     },
     "produces": ["application/json"],
