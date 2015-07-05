@@ -142,8 +142,6 @@ var
             },
             onDelete: 'restrict'
         });
-
-
     };
 
 data.prototype.createDb = function () {
