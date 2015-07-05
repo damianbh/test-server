@@ -131,7 +131,7 @@ var
         });
         self.models.Provider.belongsToMany(self.models.Client, {
             as: 'Clients', through: 'ClientProvider',
-            onDelete: 'cascade'
+            onDelete: 'restrict'
         });
 
         self.models.Employee.belongsTo(self.models.Office, {
