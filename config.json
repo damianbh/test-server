@@ -6,7 +6,7 @@
   "connection": {
     "database": "krfsRestTest",
     "username": "root",
-    "password": "20dakota04",
+    "password": "",
     "options": {
       "host": "localhost",
       "pool": {
