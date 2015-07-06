@@ -121,8 +121,6 @@ var
             }, {
                 timestamps: false
             })
-
-
         };
 
         self.models.Client.belongsToMany(self.models.Provider, {
